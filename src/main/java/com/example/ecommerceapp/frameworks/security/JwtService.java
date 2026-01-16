@@ -4,6 +4,7 @@ import com.example.ecommerceapp.domain.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
@@ -35,7 +36,7 @@ public class JwtService {
     }
 
     // ===== VALIDATE TOKEN =====
-    public boolean isTokenValid(String token) {
+    public boolean isTokenValid(String token, UserDetails userDetails) {
         try {
             extractAllClaims(token);
             return true;
